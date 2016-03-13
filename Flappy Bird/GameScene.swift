@@ -13,12 +13,14 @@ class GameScene: SKScene {
     // Add Nodes for each object that will be displayed.
     var bird = SKSpriteNode()
     var background = SKSpriteNode()
+    var pipe1 = SKSpriteNode()
+    var pipe2 = SKSpriteNode()
+    
 
     //Equivalent viewDidLoad
     override func didMoveToView(view: SKView) {
         
         //  Make sure to first set the code for the background so that the animation will not be overrun and thus invisible.
-        
         let backgroundTexture = SKTexture(imageNamed: "bg.png")
         // Make the background move to the left to create the illusion that the bird is moving right.
         let moveBackground = SKAction.moveByX(-backgroundTexture.size().width, y: 0, duration: 9)
@@ -26,6 +28,8 @@ class GameScene: SKScene {
         // Jumps the background back to its original position. Duration 0 to move immediately.
         let replaceBackground = SKAction.moveByX(backgroundTexture.size().width, y: 0, duration: 0)
         let moveBackgroundForever = SKAction.repeatActionForever(SKAction.sequence([moveBackground, replaceBackground]))
+        
+        
         
         // To get rid of the greyness after the background has finished.
         for var i: CGFloat = 0; i<3; i++ {
@@ -41,6 +45,8 @@ class GameScene: SKScene {
             self.addChild(background)
         }
         
+        
+        // Set the properties for the animated bird.
         // When using spriteKit, define objects that will be animated as a Texture.
         let birdTexture = SKTexture(imageNamed: "flappy1.png")
         let birdTexture2 = SKTexture(imageNamed: "flappy2.png")
@@ -61,8 +67,10 @@ class GameScene: SKScene {
         bird.physicsBody!.dynamic = true
         // Add the Node to the screen/scene.
         self.addChild(bird)
+        
+        
         // Create an invisible (thus not a sprite) ground property so that the bird does not fall off the screen.
-        var ground = SKNode()
+        let ground = SKNode()
         ground.position = CGPointMake(0, 0)
         ground.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, 1))
         //Ground should not be affected by gravity.
@@ -70,6 +78,30 @@ class GameScene: SKScene {
         //Add ground to the scene.
         self.addChild(ground)
         
+        
+        // Add a gap for in between the pipes.
+        let gapHeight = birdTexture.size().height * 4
+        //Create randomness for positions pipes. Move at max half of the screen. COnvert to UInt32.
+        let moveAmount = arc4random() % UInt32(self.frame.size.height / 2)
+        // Limit the movement between top and bottom quarter of screen.
+        let pipeOffset = CGFloat(moveAmount) - self.frame.size.height / 4
+        
+        
+        // Set the properties for pipe 1.
+        let pipeTexture = SKTexture(imageNamed: "pipe1.png")
+        let pipe1 = SKSpriteNode(texture: pipeTexture)
+        // Set position for the pipe. Add a 1000 pixels from the bottom.
+        // The following line sets the pipe to reach exactly the middle. For pipe 2, subtract instead of add. pipe1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + pipeTexture.size().height/2)
+        pipe1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + pipeTexture.size().height/2 + gapHeight/2 + pipeOffset)
+        //Add it to the scene.
+        self.addChild(pipe1)
+        
+        
+        // Set the properties for pipe 2.
+        let pipe2Texture = SKTexture(imageNamed: "pipe2.png")
+        let pipe2 = SKSpriteNode(texture: pipe2Texture)
+        pipe2.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - pipe2Texture.size().height/2 - gapHeight/2 + pipeOffset)
+        self.addChild(pipe2)
 
     }
     
