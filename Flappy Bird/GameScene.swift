@@ -9,34 +9,55 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    // Add Nodes for each object that will be displayed.
+    var bird = SKSpriteNode()
+    var background = SKSpriteNode()
+
+    //Equivalent viewDidLoad
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!"
-        myLabel.fontSize = 45
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         
-        self.addChild(myLabel)
+//       Make sure to first set the code for the background so that the animation will not be overrun and thus invisible.
+        
+        let backgroundTexture = SKTexture(imageNamed: "bg.png")
+        // Add texture to background.
+        background = SKSpriteNode(texture: backgroundTexture)
+        //Position and size background
+        background.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        background.size.height = self.frame.height
+        background.zPosition = -1
+        
+        // Make the background move to the left (by ten degrees) to create the illusion that the bird is moving right.
+        let moveBackground = SKAction.moveByX(-10, y: 0, duration: 0.2)
+        let moveBackgroundForever = SKAction.repeatActionForever(moveBackground)
+        // Apply to the background
+        background.runAction(moveBackgroundForever)
+        
+        self.addChild(background)
+        
+        
+        // When using spriteKit, define objects that will be animated as a Texture.
+        let birdTexture = SKTexture(imageNamed: "flappy1.png")
+        let birdTexture2 = SKTexture(imageNamed: "flappy2.png")
+        //Create animation
+        let animation = SKAction.animateWithTextures([birdTexture, birdTexture2], timePerFrame: 0.1)
+        // Repeat animation
+        let birdFlapForever = SKAction.repeatActionForever(animation)
+        // Apply the texture to the bird
+        bird = SKSpriteNode(texture: birdTexture)
+        //Tell XCode where to put the animated bird (middle).
+        bird.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        bird.zPosition = 1
+        // Add animation to bird Sprite
+        bird.runAction(birdFlapForever)
+        // Add the Node to the screen/scene.
+        self.addChild(bird)
+        
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
         
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
     }
    
     override func update(currentTime: CFTimeInterval) {

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B612ED951C95D63F0016701E /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B612ED901C95D63F0016701E /* bg.png */; };
+		B612ED961C95D63F0016701E /* flappy1.png in Resources */ = {isa = PBXBuildFile; fileRef = B612ED911C95D63F0016701E /* flappy1.png */; };
+		B612ED971C95D63F0016701E /* flappy2.png in Resources */ = {isa = PBXBuildFile; fileRef = B612ED921C95D63F0016701E /* flappy2.png */; };
+		B612ED981C95D63F0016701E /* pipe1.png in Resources */ = {isa = PBXBuildFile; fileRef = B612ED931C95D63F0016701E /* pipe1.png */; };
+		B612ED991C95D63F0016701E /* pipe2.png in Resources */ = {isa = PBXBuildFile; fileRef = B612ED941C95D63F0016701E /* pipe2.png */; };
 		B67D04311C949F2B00396ADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67D04301C949F2B00396ADE /* AppDelegate.swift */; };
 		B67D04331C949F2B00396ADE /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B67D04321C949F2B00396ADE /* GameScene.sks */; };
 		B67D04351C949F2B00396ADE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67D04341C949F2B00396ADE /* GameScene.swift */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B612ED901C95D63F0016701E /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = ../../../../../../Downloads/img/bg.png; sourceTree = "<group>"; };
+		B612ED911C95D63F0016701E /* flappy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flappy1.png; path = ../../../../../../Downloads/img/flappy1.png; sourceTree = "<group>"; };
+		B612ED921C95D63F0016701E /* flappy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flappy2.png; path = ../../../../../../Downloads/img/flappy2.png; sourceTree = "<group>"; };
+		B612ED931C95D63F0016701E /* pipe1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pipe1.png; path = ../../../../../../Downloads/img/pipe1.png; sourceTree = "<group>"; };
+		B612ED941C95D63F0016701E /* pipe2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pipe2.png; path = ../../../../../../Downloads/img/pipe2.png; sourceTree = "<group>"; };
 		B67D042D1C949F2B00396ADE /* Flappy Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flappy Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67D04301C949F2B00396ADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B67D04321C949F2B00396ADE /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -62,6 +72,11 @@
 				B67D04321C949F2B00396ADE /* GameScene.sks */,
 				B67D04341C949F2B00396ADE /* GameScene.swift */,
 				B67D04361C949F2B00396ADE /* GameViewController.swift */,
+				B612ED901C95D63F0016701E /* bg.png */,
+				B612ED911C95D63F0016701E /* flappy1.png */,
+				B612ED921C95D63F0016701E /* flappy2.png */,
+				B612ED931C95D63F0016701E /* pipe1.png */,
+				B612ED941C95D63F0016701E /* pipe2.png */,
 				B67D04381C949F2B00396ADE /* Main.storyboard */,
 				B67D043B1C949F2B00396ADE /* Assets.xcassets */,
 				B67D043D1C949F2B00396ADE /* LaunchScreen.storyboard */,
@@ -129,10 +144,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B612ED971C95D63F0016701E /* flappy2.png in Resources */,
+				B612ED951C95D63F0016701E /* bg.png in Resources */,
 				B67D04331C949F2B00396ADE /* GameScene.sks in Resources */,
+				B612ED981C95D63F0016701E /* pipe1.png in Resources */,
 				B67D043F1C949F2B00396ADE /* LaunchScreen.storyboard in Resources */,
+				B612ED991C95D63F0016701E /* pipe2.png in Resources */,
 				B67D043C1C949F2B00396ADE /* Assets.xcassets in Resources */,
 				B67D043A1C949F2B00396ADE /* Main.storyboard in Resources */,
+				B612ED961C95D63F0016701E /* flappy1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +313,7 @@
 				B67D04451C949F2B00396ADE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
