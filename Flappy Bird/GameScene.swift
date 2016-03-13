@@ -74,6 +74,12 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // On each touch, an impulse should be applied so that the bird moves up.
+        // 0 here - instantaneously set the velocity to 0
+        bird.physicsBody!.velocity = CGVectorMake(0, 0)
+        // Apply the impulse (jumping upwards), nothing horizontal, 50 vertically. Set the difficulty of the game here.
+        bird.physicsBody!.applyImpulse(CGVectorMake(0, 50))
+        
         
     }
    
