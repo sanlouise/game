@@ -59,12 +59,17 @@ class GameScene: SKScene {
         bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture.size().height/2)
         // Apply gravity.
         bird.physicsBody!.dynamic = true
-        // Create a ground property so that the bird does not fall off the screen.
         // Add the Node to the screen/scene.
         self.addChild(bird)
+        // Create an invisible (thus not a sprite) ground property so that the bird does not fall off the screen.
+        var ground = SKNode()
+        ground.position = CGPointMake(0, 0)
+        ground.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, 1))
+        //Ground should not be affected by gravity.
+        ground.physicsBody!.dynamic = false
+        //Add ground to the scene.
+        self.addChild(ground)
         
-        
-
 
     }
     
