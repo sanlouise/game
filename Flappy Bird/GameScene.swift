@@ -175,7 +175,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pipe2.physicsBody!.collisionBitMask = ColliderType.Object.rawValue
         movingObjects.addChild(pipe2)
         
-        
         // Detecting the bird flying through the gap to increase the score.
         let gap = SKNode()
         // Middle of the pipes.
